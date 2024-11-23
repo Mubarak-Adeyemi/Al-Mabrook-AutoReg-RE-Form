@@ -194,6 +194,9 @@ input[type="number"] {
   opacity: 1;
   transition: opacity 0.3s ease, visibility 0.3s ease, top 0.3s ease;
 }
+.hidden {
+  display: none;
+}
 .success-message.hidden,
 .hidden {
   top: 0;
