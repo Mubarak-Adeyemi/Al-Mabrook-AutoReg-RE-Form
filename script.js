@@ -283,29 +283,6 @@ document.addEventListener("DOMContentLoaded", () => {
       resetForm();
     }
   };
-
-  formContainer.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const formData = {
-      name: e.target.name.value,
-      phone: e.target.phone.value,
-      email: e.target.email.value,
-      rPlate: String(
-        `${e.target.suffix.value}${e.target.number.value}${e.target.prefix.value}`
-      ),
-      oPlates: e.target.others.value,
-    };
-
-    const response = await fetch("/.netlify/functions/addToSheet", {
-      method: "POST",
-      body: JSON.stringify(formData),
-    });
-
-    const result = await response.json();
-    console.log(result.message || result.error);
-  });
-
   fullNameInput.addEventListener("input", validateFullnameInput);
   emailInput.addEventListener("input", validateEmailInput);
   phoneInput.addEventListener("input", validatePhoneInput);

@@ -17,7 +17,7 @@ exports.handler = async function (event) {
 
     const sheets = google.sheets({ version: "v4", auth });
     const spreadsheetId =
-      "https://docs.google.com/spreadsheets/d/1-lCH-fh_BgWKl2lxg9tEHE8I0Jqyp60KcmYfvxMAabY/edit?gid=0#gid=0"; // Replace with your spreadsheet ID
+      "1-lCH-fh_BgWKl2lxg9tEHE8I0Jqyp60KcmYfvxMAabY/edit?gid=0#gid=0"; // Replace with your spreadsheet ID
     const range = "Sheet1!A:E"; // Adjust based on your sheet structure
 
     // Append data to Google Sheets
