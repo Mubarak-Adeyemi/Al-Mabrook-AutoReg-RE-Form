@@ -40,7 +40,14 @@
       </header>
       <section aria-labelledby="form-heading">
         <h2 id="form-heading">Set Up Your Reminder</h2>
-        <form action="#" id="renewal-reminder-form" novalidate>
+        <form
+          action="./netlify/functions/addToSheet.js"
+          id="renewal-reminder-form"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          novalidate
+        >
           <!-- Number Plate Section -->
           <fieldset>
             <legend>Choose Your Number Plate Type *</legend>
@@ -192,7 +199,7 @@
             <input
               type="text"
               id="full-name"
-              name="full-name"
+              name="name"
               placeholder="Full Name *"
               required
               aria-required="true"
