@@ -281,7 +281,7 @@
     <script src="./script.js"></script>
     <script>
       const scriptURL =
-        "https://script.google.com/macros/s/AKfycbye0pVcPp92jDc5GiN6hlb-whbQftRei3Wrhvf9OQ1gQYKAAHbx8ugnCIlKPgLcpXjbfQ/exec "; // Replace with your deployed Apps Script URL
+        "https://script.google.com/macros/s/AKfycbwySTwaMgSz8j1Vsc8a9_ULGCWEJQUov-8ihPpH-MYAP6kPb3FyXX9FGmvX0BNOQlpqdQ/exec";
 
       document
         .getElementById("renewal-reminder-form")
@@ -298,14 +298,16 @@
             prefixInput: document.getElementById("prefix"),
           };
 
+          // Collect form data
           const formData = {
             name: fullNameInput.value,
             phone: phoneInput.value,
             email: emailInput.value,
             rPlate: `${regularInputs.LGAinput.value}${regularInputs.numberInput.value}${regularInputs.prefixInput.value}`,
-            oPlates: otherPlateInput.vallue,
+            oPlates: otherPlateInput.value,
           };
 
+          // Submit form data to Google Apps Script
           fetch(scriptURL, {
             method: "POST",
             body: JSON.stringify(formData),
@@ -313,14 +315,18 @@
               "Content-Type": "application/json",
             },
           })
-            .then((response) => response.text())
+            .then((response) => response.json())
             .then((data) => {
-              alert("Form submitted successfully!");
-              console.log(data); // For debugging
+              if (data.message === "Success") {
+                alert("Form submitted successfully!");
+              } else {
+                throw new Error(data.error || "Unknown error");
+              }
+              console.log(data); // Debugging information
             })
             .catch((error) => {
               alert("Error submitting form. Please try again.");
-              console.error(error); // For debugging
+              console.error(error); // Debugging information
             });
         });
     </script>
