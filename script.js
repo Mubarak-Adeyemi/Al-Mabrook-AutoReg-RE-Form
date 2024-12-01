@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const supabaseUrl = "https://ezfqcicxvrjvdgipkoig.supabase.co";
+  const supabaseKey =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV6ZnFjaWN4dnJqdmRnaXBrb2lnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMwNjMyMTUsImV4cCI6MjA0ODYzOTIxNX0.LHTZJM5I5gE_wTfoMUyfPVgUKPOmg5Q2YdppAUiyHL0";
+  window.supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+  emailjs.init("MPZWfC-P-YNf4Hjr2");
+
   //DOM Elements
   const formContainer = document.getElementById("renewal-reminder-form");
   const regularField = document.getElementById("regular-fieldset");
@@ -249,6 +256,71 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const SendMail = async () => {
+    const formData = {
+      name: fullNameInput.value || "N/A",
+      phone: phoneInput.value || "N/A",
+      email: emailInput.value || "N/A",
+      rPlate:
+        regularInputs.LGAinput.value +
+          regularInputs.numberInput.value +
+          regularInputs.prefixInput.value || "N/A",
+      oPlate: otherPlateInput.value || "N/A",
+    };
+
+    try {
+      // Send email notification using EmailJS
+      const emailResponse = await emailjs.send(
+        "service_ds40byv",
+        "template_gzsh29g",
+        formData
+      );
+
+      console.log("Email Sent:", emailResponse);
+      alert("Form submitted successfully! Notification sent.");
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      alert("Form submitted, but failed to send notification.");
+    }
+  };
+
+  const addFormToDB = async () => {
+    const formData = {
+      name: fullNameInput.value || null,
+      phone: phoneInput.value || null,
+      email: emailInput.value || null,
+      rPlate:
+        regularInputs.LGAinput.value +
+          regularInputs.numberInput.value +
+          regularInputs.prefixInput.value || null,
+      oPlate: otherPlateInput.value || null,
+    };
+
+    // Remove empty fields
+    const cleanedData = Object.fromEntries(
+      Object.entries(formData).filter(
+        ([_, value]) => value !== null && value !== ""
+      )
+    );
+
+    console.log("Cleaned Form Data:", cleanedData); // Debugging: Check the final payload
+
+    try {
+      // Insert cleaned data into Supabase
+      const { data, error } = await supabase
+        .from("form_submissions")
+        .insert([cleanedData]);
+
+      if (error) throw error;
+
+      // alert("Form submitted successfully!");
+      console.log("Inserted data:", data);
+    } catch (error) {
+      alert("Error submitting form. Please check the console for details.");
+      console.error("Submission Error:", error);
+    }
+  };
+
   // Function to rest form
   const resetForm = () => {
     formContainer.reset();
@@ -278,8 +350,9 @@ document.addEventListener("DOMContentLoaded", () => {
       isConsentValid;
 
     if (formIsValid) {
+      addFormToDB();
+      SendMail();
       displaySuccessMessage();
-
       resetForm();
     }
   };

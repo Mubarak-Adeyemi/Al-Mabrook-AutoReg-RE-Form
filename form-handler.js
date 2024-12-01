@@ -1,49 +1,40 @@
-const scriptURL =
-  "https://script.google.com/macros/s/AKfycbwySTwaMgSz8j1Vsc8a9_ULGCWEJQUov-8ihPpH-MYAP6kPb3FyXX9FGmvX0BNOQlpqdQ/exec";
+// document
+//   .getElementById("renewal-reminder-form")
+//   .addEventListener("submit", async function (e) {
+//     e.preventDefault();
 
-document
-  .getElementById("renewal-reminder-form")
-  .addEventListener("submit", function (e) {
-    e.preventDefault();
+//     const formData = {
+//       name: document.getElementById("full-name").value || null,
+//       phone: document.getElementById("phone").value || null,
+//       email: document.getElementById("email").value || null,
+//       rPlate:
+//         document.getElementById("LGA").value +
+//           document.getElementById("number").value +
+//           document.getElementById("prefix").value || null,
+//       oPlate: document.getElementById("others").value || null,
+//     };
 
-    const otherPlateInput = document.getElementById("others");
-    const fullNameInput = document.getElementById("full-name");
-    const emailInput = document.getElementById("email");
-    const phoneInput = document.getElementById("phone");
-    const regularInputs = {
-      LGAinput: document.getElementById("LGA"),
-      numberInput: document.getElementById("number"),
-      prefixInput: document.getElementById("prefix"),
-    };
+//     // Remove empty fields
+//     const cleanedData = Object.fromEntries(
+//       Object.entries(formData).filter(
+//         ([_, value]) => value !== null && value !== ""
+//       )
+//     );
 
-    // Collect form data
-    const formData = {
-      name: fullNameInput.value,
-      phone: phoneInput.value,
-      email: emailInput.value,
-      rPlate: `${regularInputs.LGAinput.value}${regularInputs.numberInput.value}${regularInputs.prefixInput.value}`,
-      oPlates: otherPlateInput.value,
-    };
+//     console.log("Cleaned Form Data:", cleanedData); // Debugging: Check the final payload
 
-    // Submit form data to Google Apps Script
-    fetch(scriptURL, {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.message === "Success") {
-          alert("Form submitted successfully!");
-        } else {
-          throw new Error(data.error || "Unknown error");
-        }
-        console.log(data); // Debugging information
-      })
-      .catch((error) => {
-        alert("Error submitting form. Please try again.");
-        console.error(error); // Debugging information
-      });
-  });
+//     try {
+//       // Insert cleaned data into Supabase
+//       const { data, error } = await supabase
+//         .from("form_submissions")
+//         .insert([cleanedData]);
+
+//       if (error) throw error;
+
+//       alert("Form submitted successfully!");
+//       console.log("Inserted data:", data);
+//     } catch (error) {
+//       alert("Error submitting form. Please check the console for details.");
+//       console.error("Submission Error:", error);
+//     }
+//   });
