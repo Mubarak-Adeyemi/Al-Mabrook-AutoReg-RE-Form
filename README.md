@@ -10,7 +10,6 @@
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
@@ -22,8 +21,8 @@ The _Renewal Reminder Form_ is a responsive, user-friendly web form designed to
 assist users in submitting plate renewal information efficiently. It dynamically
 adjusts input fields based on the selected plate type and ensures data integrity
 through comprehensive validations, providing immediate feedback to users. The
-project integrates seamlessly with Netlify's form handling, Google Sheets, and
-Mail.js to streamline data processing and notifications.
+project integrates seamlessly with Supabase, and Mailjs to streamline data
+processing and notifications.
 
 ### Screenshot
 
@@ -34,7 +33,8 @@ Mail.js to streamline data processing and notifications.
 
 - GITHUB URL:
   [GitHub Repo](https://github.com/Mubarak-Adeyemi/Al-Mabrook-AutoReg-RE-Form)
-- Live Site URL: [Live Site]()
+- Live Site URL:
+  [Live Site](https://mubarak-adeyemi.github.io/Al-Mabrook-AutoReg-RE-Form/)
 
 ## My process
 
@@ -46,11 +46,8 @@ Mail.js to streamline data processing and notifications.
   properties (`:root`) and media queries for responsiveness.
 - **JavaScript (ES6):** Handles form interactivity, input validations, and
   dynamic field management.
-- **Netlify Forms:** Provides serverless backend functionality for form
-  submission and data handling.
+- **Supabase:** Provides serverless backend functionality for form data storage.
 - **Mail.js:** Enables email notifications to be sent upon form submission.
-- **Google Sheets Integration:** Automatically logs form data for easy tracking
-  and management.
 
 ---
 
@@ -62,9 +59,9 @@ Mail.js to streamline data processing and notifications.
   names, email addresses, and phone numbers.
 - **Responsive Design Principles:** Enhanced understanding of how to make forms
   adapt seamlessly across devices using CSS and media queries.
-- **Integrations:** Learned how to integrate serverless solutions like Netlify
-  Forms and connect them with external tools like Google Sheets and Mail.js for
-  enhanced functionality.
+- **Supabase Integration:** Implementing Supabase for seamless data storage and
+  integration with third-party services like emailjs for notifications.
+
 - **Error Handling:** Built reusable functions to display and clear error
   messages for an improved user experience.
 
@@ -125,33 +122,37 @@ Mail.js to streamline data processing and notifications.
 
 - **Accessibility Enhancements:** Include ARIA roles and labels for even better
   screen reader compatibility.
-- **Database Integration:** Transition from Google Sheets to a dedicated
-  database for scalable data management.
-- **Form Security:** Implement CAPTCHA or honeypot fields to minimize spam
-  submissions.
+- **Database Integration:** Transition from Supabase to a dedicated database for
+  scalable data management.
+
 - **Styling Upgrades:** Add animation effects and refine design for an even more
   polished user experience.
 - **Deployment Automation:** Explore CI/CD pipelines to automate updates and
   deployments.
-
-### Useful resources
-
-- []()
-- []()
 
 ## Author
 
 - Frontend Mentor -
   [Mubarak-Adeyemi](https://www.frontendmentor.io/profile/Mubarak-Adeyemi)
 - Twitter - [@mubarakElarabiy](https://www.twitter.com/@mubarakElarabiy)
+- LinkedIn - [Mubarak-dhikrullah]
+  (https://www.linkedin.com/in/mubarak-dhikrullah-119731206?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
+  )
 
 ## Acknowledgments
 
-**Allah:** All praise and thanks are due to Allah, our Creator, for His
-guidance, blessings, and provision throughout this project. **Mr. Oluwasheun:**
-I am grateful for your introduction to Mail.js and your guidance on its
-application, which greatly improved the functionality of this project. **Mr.
-Malik:** Your invaluable advice and thoughtful insights helped shape the
-direction of this work, ensuring a robust and user-friendly result. **Umu
-Hannan:** Thank you for your consistent encouragement and motivation, which
-fueled my determination to see this project to completion.
+All praise and gratitude are due to Allah, the Creator, for granting me the
+knowledge, strength, and ability to complete this project.
+
+I extend my heartfelt appreciation to:
+
+- **Mr. Oluwasheun:** for introducing to Supabase and Mailjs and your guidance
+  on their application, which greatly improved the functionality of this
+  project.
+- **Mr.Malik:** for his thoughtful advice and guidance, which were instrumental
+  in refining the form’s design and functionality.
+- **Umu Hannan:** for her unwavering encouragement and motivation, which fueled
+  my determination to see this project to completion.
+
+Their contributions and support have been invaluable in making this
+project a success.
