@@ -48,7 +48,7 @@ body {
 .logo {
   height: 100px;
   width: 100px;
-  background: no-repeat center/80% url("./images/al-mabrook.png");
+  background: no-repeat center/80% url("./images/al-mabrook-logo.png");
   margin: auto;
   border-radius: 50%;
   box-shadow: 22px 22px 44px var(--shadow-light),

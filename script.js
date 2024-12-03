@@ -277,10 +277,8 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       console.log("Email Sent:", emailResponse);
-      alert("Form submitted successfully! Notification sent.");
     } catch (error) {
       console.error("EmailJS Error:", error);
-      alert("Form submitted, but failed to send notification.");
     }
   };
 
@@ -303,8 +301,6 @@ document.addEventListener("DOMContentLoaded", () => {
       )
     );
 
-    console.log("Cleaned Form Data:", cleanedData); // Debugging: Check the final payload
-
     try {
       // Insert cleaned data into Supabase
       const { data, error } = await supabase
@@ -313,10 +309,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (error) throw error;
 
-      // alert("Form submitted successfully!");
+      alert("Form submitted successfully!");
       console.log("Inserted data:", data);
     } catch (error) {
-      alert("Error submitting form. Please check the console for details.");
+      alert("Error submitting form.");
       console.error("Submission Error:", error);
     }
   };
